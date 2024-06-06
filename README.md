@@ -52,6 +52,7 @@ Containers are the other key building block Docker is all about.
 
 <details>
   <summary>Key Docker Commands</summary>
+  <br>
 
 For a full list of all commands, add `--help` after a command - e.g., `docker --help`, `docker run --help`, etc.
 
@@ -83,7 +84,7 @@ Important: This can be overwhelming! You'll only need a fraction of those featur
 
 <details>
   <summary>Images & Containers</summary>
-
+  <br>
 Images are read-only - once they're created, they can't change (you have to rebuild them to update them).
 
 Containers, on the other hand, can read and write - they add a thin "read-write layer" on top of the image. That means that they can make changes to the files and folders in the image without actually changing the image.
@@ -99,7 +100,7 @@ Problem 1 can be solved with a Docker feature called "Volumes". Problem 2 can be
 
 <details>
   <summary>Volumes</summary>
-
+  <br>
 Volumes are folders (and files) managed on your host machine which are connected to folders/files inside of a container.
 
 There are two types of Volumes:
@@ -125,7 +126,7 @@ Named Volumes are never removed, you need to do that manually (via `docker volum
 
 <details>
   <summary>Bind Mounts</summary>
-
+  <br>
 Bind Mounts are very similar to Volumes - the key difference is, that you, the developer, set the path on your host machine that should be connected to some path inside of a Container.
 
 You do that via `-v /absolute/path/on/your/host/machine:/some/path/inside/of/container`.
@@ -142,7 +143,8 @@ In general, Bind Mounts are a great tool during development - they're not meant 
 
 <details>
   <summary>Key Docker Commands</summary>
-
+  <br>
+  
 - `docker run -v /path/in/container IMAGE`: Create an Anonymous Volume inside a Container.
 - `docker run -v some-name:/path/in/container IMAGE`: Create a Named Volume (named some-name) inside a Container.
 - `docker run -v /path/on/your/host/machine:path/in/container IMAGE`: Create a Bind Mount and connect a local path on your host machine to some path in the Container.
