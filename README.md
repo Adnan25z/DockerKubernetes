@@ -27,9 +27,10 @@ This repository serves as my personal reference and log of my progress in unders
 
 ## Containers
 
-### Images & Containers
+<details>
+  <summary>Images & Containers</summary>
 
-#### Images
+### Images
 
 Images are one of the two core building blocks Docker is all about (the other one is "Containers").
 
@@ -39,7 +40,7 @@ Images are one of the two core building blocks Docker is all about (the other on
 - Dockerfiles contain instructions which are executed when an image is built (`docker build .`), every instruction then creates a layer in the image. Layers are used to efficiently rebuild and share images.
 - The `CMD` instruction is special: It's not executed when the image is built but when a container is created and started based on that image.
 
-#### Containers
+### Containers
 
 Containers are the other key building block Docker is all about.
 
@@ -47,7 +48,10 @@ Containers are the other key building block Docker is all about.
 - Multiple Containers can therefore be started based on one and the same Image. All Containers run in isolation, i.e., they don't share any application state or written data.
 - You need to create and start a Container to start the application which is inside of a Container. So it's Containers which are in the end executed - both in development and production.
 
-#### Key Docker Commands
+</details>
+
+<details>
+  <summary>Key Docker Commands</summary>
 
 For a full list of all commands, add `--help` after a command - e.g., `docker --help`, `docker run --help`, etc.
 
@@ -73,9 +77,12 @@ Important: This can be overwhelming! You'll only need a fraction of those featur
 - `docker push IMAGE`: Push an image to DockerHub (or another registry) - the image name/tag must include the repository name/url
 - `docker pull IMAGE`: Pull (download) an image from DockerHub (or another registry) - this is done automatically if you just `docker run IMAGE` and the image wasn't pulled before
 
+</details>
+
 ## Data & Volumes
 
-### Images & Containers
+<details>
+  <summary>Images & Containers</summary>
 
 Images are read-only - once they're created, they can't change (you have to rebuild them to update them).
 
@@ -88,7 +95,10 @@ But even with read-write Containers, two big problems occur in many applications
 
 Problem 1 can be solved with a Docker feature called "Volumes". Problem 2 can be solved by using "Bind Mounts".
 
-### Volumes
+</details>
+
+<details>
+  <summary>Volumes</summary>
 
 Volumes are folders (and files) managed on your host machine which are connected to folders/files inside of a container.
 
@@ -111,7 +121,10 @@ By default, Anonymous Volumes are removed if the Container was started with the 
 
 Named Volumes are never removed, you need to do that manually (via `docker volume rm VOL_NAME`, see reference below).
 
-### Bind Mounts
+</details>
+
+<details>
+  <summary>Bind Mounts</summary>
 
 Bind Mounts are very similar to Volumes - the key difference is, that you, the developer, set the path on your host machine that should be connected to some path inside of a Container.
 
@@ -125,7 +138,10 @@ Don't use Bind Mounts if you just want to persist data - Named Volumes should be
 
 In general, Bind Mounts are a great tool during development - they're not meant to be used in production (since your container should run isolated from its host machine).
 
-### Key Docker Commands
+</details>
+
+<details>
+  <summary>Key Docker Commands</summary>
 
 - `docker run -v /path/in/container IMAGE`: Create an Anonymous Volume inside a Container.
 - `docker run -v some-name:/path/in/container IMAGE`: Create a Named Volume (named some-name) inside a Container.
@@ -134,4 +150,7 @@ In general, Bind Mounts are a great tool during development - they're not meant 
 - `docker volume create VOL_NAME`: Create a new (Named) Volume named VOL_NAME. You typically don't need to do that, since Docker creates them automatically for you if they don't exist when running a container.
 - `docker volume rm VOL_NAME`: Remove a Volume by its name (or ID).
 - `docker volume prune`: Remove all unused Volumes (i.e., not connected to a currently running or stopped container).
+
+</details>
+
 
