@@ -1,6 +1,7 @@
 # Docker and Kubernetes
-## Overview
-Docker and Kubernetes are essential tools for modern software development and deployment, providing a consistent and scalable environment.
+
+## Purpose
+This repository serves as my personal reference and log of my progress in understanding Docker and Kubernetes.
 
 ## Topics Covered
 - **Foundation:**
@@ -19,10 +20,7 @@ Docker and Kubernetes are essential tools for modern software development and de
   - Data & Volumes
   - Networking
   - Deploying a Kubernetes Cluster
-
-## Purpose
-This repository serves as my personal reference and log of my progress in understanding Docker and Kubernetes.
-<br><br><br>
+  <br>
 # Docker Cheat Sheet
 
 ## Containers
@@ -57,8 +55,6 @@ Containers are the other key building block Docker is all about.
 For a full list of all commands, add `--help` after a command - e.g., `docker --help`, `docker run --help`, etc.
 
 Also, view the official docs for a full, detailed documentation of ALL commands and features: [Docker Docs](https://docs.docker.com/engine/reference/run/)
-
-Important: This can be overwhelming! You'll only need a fraction of those features and commands in reality!
 
 - `docker build .`: Build a Dockerfile and create your own Image based on the file
   - `-t NAME:TAG`: Assign a NAME and a TAG to an image
