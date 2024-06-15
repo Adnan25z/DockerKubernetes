@@ -16,5 +16,8 @@ COPY . .
 # Expose the port on which your backend application will run
 EXPOSE 80
 
+ENV MONGODB_USERNAME=root
+ENV MONGODB_PASSWORD=password
+
 # Start the backend application
-CMD ["node", "app.js"]
+CMD ["npm", "start"]
