@@ -249,3 +249,84 @@ fetch('http://cont1/my-data').then(...);
 ```
 
 </details>
+
+## Docker Compose
+
+<details>
+  <summary>Overview</summary>
+
+<br>
+
+Docker Compose is an additional tool, offered by the Docker ecosystem, which helps with the orchestration/management of multiple Containers. It can also be used for single Containers to simplify building and launching.
+
+### Why?
+
+Consider this example:
+
+To bring up all Containers required by this application, you would typically need to run several commands. For instance:
+
+```bash
+docker network create shop
+docker build -t shop-node .
+docker run -v logs:/app/logs --network shop --name shop-web shop-node
+docker build -t shop-database .
+docker run -v data:/data/db --network shop --name shop-db shop-database
+```
+
+These commands need to be executed and memorized to bring up the Containers. Additionally, you have to run most of these commands whenever you change something in your code or need to bring up your Containers again for some other reason.
+
+With Docker Compose, this process becomes much easier. You can put your Container configuration into a docker-compose.yaml file and then use just one command to bring up the entire environment: `docker-compose up`.
+
+</details>
+
+<details>
+  <summary>Docker Compose Files</summary>
+  
+  <br>
+  
+A docker-compose.yaml file simplifies the management of your containers. Here’s a sample structure:
+
+```yaml
+version: "3.8" # Version of the Docker Compose spec being used
+
+services: # "Services" are the Containers that your app needs
+  web:
+    build: # Define the path to your Dockerfile for the image of this container
+      context: .
+      dockerfile: Dockerfile-web
+    volumes: # Define any required volumes / bind mounts
+      - logs:/app/logs
+
+  db:
+    build: # Define the path to your Dockerfile for the database image
+      context: ./db
+      dockerfile: Dockerfile-db
+    volumes:
+      - data:/data/db
+```
+
+You can conveniently edit this file at any time and use a short, simple command to bring up your Containers:
+```bash
+docker-compose up
+```
+
+Important: When using Docker Compose, you automatically get a Network for all your Containers. You don't need to add your own Network unless you need multiple Networks!
+
+</details>
+
+<details>
+  <summary>Docker Compose Key Commands</summary>
+
+  <br>
+  
+There are two key commands to manage Docker Compose:
+
+- docker-compose up: Start all containers/services mentioned in the Docker Compose file.
+  - `-d`: Start in detached mode.
+  - `--build`: Force Docker Compose to re-evaluate/rebuild all images (otherwise, it only does this if an image is missing).
+    
+- docker-compose down: Stop and remove all containers/services.
+  - `-v`: Remove all Volumes used for the Containers - otherwise they stay around, even if the Containers are removed
+
+</details>
+
